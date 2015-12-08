@@ -59,6 +59,22 @@ if not %errorlevel%==0 (
 echo %tpp_install_file_inf% >> %tpp_install_data%.inf
 )
 
+findstr /C:"%tpp_install_file%" %file_tpp%
+if %errorlevel%==0 (
+cls
+echo "Looks like %file_tpp% file patch was already made, skipping..."
+TIMEOUT /NOBREAK /t 2
+goto :skip_file_patch
+)
+
+findstr /C:"%tpp_install_mod_name%.Update" %file_tppmain%
+if %errorlevel%==0 (
+cls
+echo "Looks like %file_tppmain% file patch was already made, skipping..."
+TIMEOUT /NOBREAK /t 2
+goto :skip_file_patch
+)
+
 setlocal EnableDelayedExpansion
 set "output_cnt=0"
 for /F "delims=" %%f in ('type %file_tpp%') do (
@@ -91,6 +107,8 @@ EXIT
 )
 
 cls
+
+:skip_file_patch
 
 echo "Repacking %tpp_install_data%.dat..."
 

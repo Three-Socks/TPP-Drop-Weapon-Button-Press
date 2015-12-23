@@ -8,9 +8,6 @@ function e.Update()
 
 			e.hold_pressed = Time.GetRawElapsedTimeSinceStartUp()
 
-			--TppUiCommand.AnnounceLogDelayTime(0)
-			--TppUiCommand.AnnounceLogView("DropWeapon Running")
-
 			if (bit.band(PlayerVars.scannedButtonsDirect,PlayerPad.ZOOM_CHANGE)==PlayerPad.ZOOM_CHANGE)then
 				if vars.currentInventorySlot == TppDefine.WEAPONSLOT.PRIMARY_BACK then
 					Player.UnsetEquip{ slotType = PlayerSlotType.PRIMARY_2, dropPrevEquip = true,}
@@ -32,8 +29,6 @@ function e.Update()
 			if (bit.band(PlayerVars.scannedButtonsDirect,PlayerPad.ZOOM_CHANGE)==PlayerPad.ZOOM_CHANGE)then
 				if vars.currentInventorySlot == TppDefine.WEAPONSLOT.SECONDARY then
 					Player.UnsetEquip{ slotType = PlayerSlotType.SECONDARY, dropPrevEquip = true,}
-				--else
-					--Player.UnsetEquip{ slotType = PlayerSlotType.STOLE, dropPrevEquip = true,}
 				end
 			end
 		end
